@@ -8,10 +8,12 @@ import { TutorialService } from 'src/app/services/tutorial.service';
   styleUrls: ['./tutorials-list.component.css'],
 })
 export class TutorialsListComponent implements OnInit {
-  tutorials?: Tutorial[];
+  // tutorials?: Tutorial[];
   currentTutorial: Tutorial = {};
   currentIndex = -1;
   title = '';
+
+   tutorials: Tutorial[] = []
 
   constructor(private tutorialService: TutorialService) {}
 
@@ -20,13 +22,7 @@ export class TutorialsListComponent implements OnInit {
   }
 
   retrieveTutorials(): void {
-    this.tutorialService.getAll().subscribe({
-      next: (data) => {
-        this.tutorials = data;
-        console.log(data);
-      },
-      error: (e) => console.error(e)
-    });
+     this.tutorials = this.tutorialService.getTutorials();
   }
 
   refreshList(): void {

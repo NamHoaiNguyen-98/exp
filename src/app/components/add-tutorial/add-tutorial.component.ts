@@ -23,13 +23,7 @@ export class AddTutorialComponent {
       description: this.tutorial.description
     };
 
-    this.tutorialService.create(data).subscribe({
-      next: (res) => {
-        console.log(res);
-        this.submitted = true;
-      },
-      error: (e) => console.error(e)
-    });
+    this.tutorialService.addTutorial(data);
   }
 
   newTutorial(): void {
